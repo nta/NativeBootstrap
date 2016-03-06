@@ -283,3 +283,4 @@ NativeBootstrap.vcxproj.filters
 *.opendb
 NativeBootstrap.sln
 *.db
+NativeBootstrap.licenseheader
