@@ -11,7 +11,7 @@
 
 struct IExtension
 {
-    char Name[32]{};
+    char Name[65]{};
     void(__cdecl *onExtensionUnloading)(void);
     void(__cdecl *onInitializationStart)(void);
     void(__cdecl *onInitializationComplete)(void);

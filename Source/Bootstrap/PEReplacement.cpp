@@ -11,6 +11,7 @@
 #include <Macros.h>
 #include <Windows.h>
 #include "Entrypointreplacement.h"
+#include <Extensions\ExtensionLoader.h>
 
 // Host information.
 char OriginalCode[20];
@@ -47,10 +48,8 @@ void BootstrapCallback()
 {
     PrintFunction();
 
-    /*
-        TODO(Convery):
-        Load extensions.
-    */
+    // Load the extensions.
+    LoadExtensions();
 
     // Restore the entrypoint data.
     std::memcpy((void *)OriginalEP, OriginalCode, 20);

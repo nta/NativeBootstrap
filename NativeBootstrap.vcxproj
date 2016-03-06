@@ -199,6 +199,8 @@
   <ItemGroup>
     <ClInclude Include="Source\Bootstrap\Entrypointreplacement.h" />
     <ClInclude Include="Source\Defines.h" />
+    <ClInclude Include="Source\Extensions\ExtensionLoader.h" />
+    <ClInclude Include="Source\Extensions\Interface.h" />
     <ClInclude Include="Source\Macros.h" />
     <ClInclude Include="Source\Utilities\All.h" />
     <ClInclude Include="Source\Utilities\Cryptography\Hashing\FNV1.h" />
@@ -209,6 +211,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Bootstrap\PEReplacement.cpp" />
     <ClCompile Include="Source\DllMain.cpp" />
+    <ClCompile Include="Source\Extensions\PEExtension.cpp" />
     <ClCompile Include="Source\Utilities\FileIO\CSVManager.cpp" />
     <ClCompile Include="Source\Utilities\Strings\VariadicString.cpp" />
   </ItemGroup>
