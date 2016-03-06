@@ -120,6 +120,9 @@
       <LinkTimeCodeGeneration>
       </LinkTimeCodeGeneration>
     </Link>
+    <PostBuildEvent>
+      <Command>if "$(ComputerName)" == "H08" (call C:\Users\Win7Main\Desktop\CopyBootstrap.bat)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -141,6 +144,9 @@
       <LinkTimeCodeGeneration>
       </LinkTimeCodeGeneration>
     </Link>
+    <PostBuildEvent>
+      <Command>if "$(ComputerName)" == "H08" (call C:\Users\Win7Main\Desktop\CopyBootstrap.bat)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -162,6 +168,9 @@
       <LinkTimeCodeGeneration />
       <AdditionalOptions />
     </Link>
+    <PostBuildEvent>
+      <Command>if "$(ComputerName)" == "H08" (call C:\Users\Win7Main\Desktop\CopyBootstrap.bat)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -183,6 +192,9 @@
       <LinkTimeCodeGeneration />
       <AdditionalOptions />
     </Link>
+    <PostBuildEvent>
+      <Command>if "$(ComputerName)" == "H08" (call C:\Users\Win7Main\Desktop\CopyBootstrap.bat)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\Bootstrap\Entrypointreplacement.h" />
@@ -195,6 +207,7 @@
     <ClInclude Include="Source\Utilities\Strings\VariadicString.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Bootstrap\PEReplacement.cpp" />
     <ClCompile Include="Source\DllMain.cpp" />
     <ClCompile Include="Source\Utilities\FileIO\CSVManager.cpp" />
     <ClCompile Include="Source\Utilities\Strings\VariadicString.cpp" />
