@@ -279,3 +279,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+NativeBootstrap.vcxproj.filters
+*.opendb
+NativeBootstrap.sln
+*.db
