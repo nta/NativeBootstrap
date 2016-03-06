@@ -52,6 +52,8 @@ void LoadExtensions()
     DebugPrint(va("Loaded %i extensions:", ExtensionList.size()));
     for each (IExtension Ext in ExtensionList)
     {
+        if (Ext.onInitializationStart)
+            Ext.onInitializationStart();
         DebugPrint(Ext.Name);
     }
 
@@ -68,7 +70,7 @@ void UnloadExtensions()
 }
 
 // Exported post initialization caller.
-extern "C" void FinalizeExtensions()
+extern "C" EXPORT_ATTR void FinalizeExtensions()
 {
     static bool Finalized = false;
     if (Finalized) return;

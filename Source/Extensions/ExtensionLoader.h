@@ -9,10 +9,11 @@
 */
 
 #pragma once
+#include <Macros.h>
 
 // Load and unload the extensions.
 void LoadExtensions();
 void UnloadExtensions();
 
 // Exported post initialization caller.
-extern "C" void FinalizeExtensions();
+extern "C" EXPORT_ATTR void FinalizeExtensions();
