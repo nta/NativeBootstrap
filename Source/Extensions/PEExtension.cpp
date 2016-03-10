@@ -52,9 +52,9 @@ void LoadExtensions()
     DebugPrint(va("Loaded %i extensions:", ExtensionList.size()));
     for each (IExtension Ext in ExtensionList)
     {
-        if (Ext.onInitializationStart)
-            Ext.onInitializationStart();
         DebugPrint(Ext.Name);
+        if (Ext.onInitializationStart)
+            Ext.onInitializationStart();        
     }
 
     // Ensure that the extensions are properly unloaded.

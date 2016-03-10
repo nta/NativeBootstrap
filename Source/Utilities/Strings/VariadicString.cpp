@@ -38,7 +38,7 @@ const char *va(const char *fmt, ...)
     va_end(VarArgs);
 
     // Send the string to permanent storage.
-    if (StringLength > SMALLBUFFER_SIZE)
+    if (StringLength > BUFFER_SIZE / SMALLBUFFER_SIZE)
         return va_large(DestinationBuffer);
     else
         return va_small(DestinationBuffer);
