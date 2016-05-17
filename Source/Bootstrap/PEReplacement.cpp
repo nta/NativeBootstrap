@@ -53,6 +53,12 @@ void BootstrapCallback()
 
     // Restore the entrypoint data.
     std::memcpy((void *)OriginalEP, OriginalCode, 20);
+    
+#ifdef _WIN64
+    // x64 needs some stack alignment.
+    __asm and rsp, 0xFFFFFFFFFFFFFFF0
+    __asm push 0xDEADDEADDEADDEAD
+#endif
 
     // Continue execution at the original entrypoint.
     __asm jmp OriginalEP;
