@@ -27,8 +27,18 @@ bool Unprotectmodule()
     PIMAGE_NT_HEADERS NTHeader = (PIMAGE_NT_HEADERS)((DWORD_PTR)Module + DOSHeader->e_lfanew);
     SIZE_T Size = NTHeader->OptionalHeader.SizeOfImage;
     DWORD Original = 0;
+    LPCVOID End = (LPCVOID)((LPCSTR)Module + Size);
+    LPCVOID Addr = Module;
+    MEMORY_BASIC_INFORMATION Info;
 
-    return NULL != VirtualProtect((void *)Module, Size, PAGE_EXECUTE_READWRITE, &Original);
+    while (Addr < End && VirtualQuery(Addr, &Info, sizeof(Info)) == sizeof(Info))
+    {
+        VirtualProtect(Info.BaseAddress, Info.RegionSize, PAGE_EXECUTE_READWRITE, &Original);
+
+        Addr = (LPCVOID)((LPCSTR)Info.BaseAddress + Info.RegionSize);
+    }
+
+    return true;
 }
 
 // Read the applications entrypoint address.
