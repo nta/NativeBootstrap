@@ -73,7 +73,7 @@ void BootstrapCallback()
     *(size_t *)_AddressOfReturnAddress() = OriginalEP;
 #endif
 
-    // No return.
+    // Return to the address specified above.
 }
 void InstallCallback()
 {
