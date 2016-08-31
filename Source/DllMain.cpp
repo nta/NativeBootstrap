@@ -32,6 +32,15 @@ BOOLEAN WINAPI DllMain(HINSTANCE hDllHandle, DWORD nReason, LPVOID Reserved)
         // Clean the logfile so we only save this session.
         DeleteLogfile();
 
+        // Create a console window for debug output.
+        if (!std::strstr(GetCommandLineA(), "-no_con"))
+        {
+            AllocConsole();
+            freopen("CONIN$", "r", stdin);
+            freopen("CONOUT$", "w", stdout);
+            freopen("CONOUT$", "w", stderr);
+        }
+
         // Install the entrypoint callback.
         InstallCallback();
         break;
