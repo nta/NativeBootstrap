@@ -15,7 +15,8 @@
 
 // Host information.
 char OriginalCode[20];
-size_t OriginalEP;
+extern "C" size_t OriginalEP = 0;
+extern "C" void ASM_Stackalign();
 
 // Make the application writable.
 bool Unprotectmodule()
@@ -66,12 +67,13 @@ void BootstrapCallback()
     
 #ifdef _WIN64
     // x64 needs some stack alignment.
-    __asm and rsp, 0xFFFFFFFFFFFFFFF0
-    __asm push 0xDEADDEADDEADDEAD
+    *(size_t *)_AddressOfReturnAddress() = size_t(ASM_Stackalign);
+#else
+    // Continue execution at the original entrypoint.
+    *(size_t *)_AddressOfReturnAddress() = OriginalEP;
 #endif
 
-    // Continue execution at the original entrypoint.
-    __asm jmp OriginalEP;
+    // No return.
 }
 void InstallCallback()
 {
