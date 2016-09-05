@@ -62,6 +62,10 @@ void BootstrapCallback()
     // Load the extensions.
     LoadExtensions();
 
+	// While AyriaPlatform or similar plugin should call this,
+	// we have to make sure it gets called at some point.
+	std::thread([]() { std::this_thread::sleep_for(std::chrono::seconds(3)); FinalizeExtensions(); }).detach();
+
     // Restore the entrypoint data.
     std::memcpy((void *)OriginalEP, OriginalCode, 20);
     
