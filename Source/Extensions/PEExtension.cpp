@@ -24,7 +24,7 @@ void LoadExtensions()
     
     // Find the first extension.
     FileHandle = FindFirstFileA(Searchpath, &FileData);
-    if (FileHandle == (void *)ERROR_INVALID_HANDLE || FileHandle == (void *)ERROR_INVALID_HANDLE)
+    if (FileHandle == (void *)ERROR_INVALID_HANDLE || FileHandle == (void *)INVALID_HANDLE_VALUE)
     {
         DebugPrint("No extensions found.");
         return;
